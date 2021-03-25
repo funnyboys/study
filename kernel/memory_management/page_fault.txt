@@ -1,0 +1,47 @@
+http://www.informit.com/articles/article.aspx?p=29961&seqNum=5
+
+http://bbs.chinaunix.net/thread-2324837-1-1.html
+
+https://blog.csdn.net/ganggexiongqi/article/details/6746248
+
+进程管理：
+https://blog.csdn.net/gatieme/article/details/51383272
+
+mm_struct和vm_area_struct
+Linux内核将内存划分为不同的区域(vm_area_struct)，每个区域是一系列连续的有相同保护和分页属性的页面，vm_area_struct是内存管理的最小单元。
+
+mm_struct:
+mm_struct是task_struct的一个成员变量，mm_struct是对整个进程用户空间的描述。
+mm_struct收集一系列vm_area_struct信息。
+
+
+kernel/4.1.18/linux-4.1.18.y/arch/arm64/mm/fault.c
+static int __do_page_fault()
+
+page fault
+
+1. 出现原因：
+页表中找不到对应虚拟地址的PTE
+对应虚拟地址的PTE拒绝访问
+
+2. page fault在哪里进行处理
+page fault被CPU捕获，会跳转到 page_fault_handler 进行处理
+
+3. page fault的处理方式
+page fault -> 访问地址是否合法
+a. 无效地址：segment fault，返回
+b. 有效地址：
+1). page第一次被访问: demand_page_faults(demanding pages,请求调页)
+	检查页表中是否存在该PTE		pmd_none、pte_none
+	分配新的页帧，初始化(从磁盘读入内存)
+2). page被交换到swap分区：
+	检查present标志位，如果该标志为0表示不在主存中
+	从swap分区重新读回主存
+3). COW(Copy-On-Write)：
+	PTE禁止写，vm_area允许写
+	
+
+4. 如何判断访问地址是否合法？如果地址合法有什么操作？
+判断地址合法的方式：
+static int __do_page_fault()函数 vma = find_vma(mm, addr);   
+根据传入的地址addr查找对应的vm_area_struct，如果没有找到对应的vm_area_struct，表明该地址是个无效地址。
