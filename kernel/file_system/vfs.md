@@ -78,8 +78,8 @@ tmpfs                        66034744        5  66034739    1% /run/user/1001
 tmpfs                        66034744        5  66034739    1% /run/user/1014
 ```
 
-### Linux中常见的操作
-#### 复制
+# Linux中常见的操作
+## 复制
 复制文件时，会创建一个包含新inode的新文件。
 ```
 huangchangwei@ubuntu:~$ cp diff.txt diff_new.txt
@@ -88,7 +88,7 @@ huangchangwei@ubuntu:~$ ls -li diff.txt diff_new.txt
 127264718 -rw-r--r-- 1 huangchangwei huangchangwei 6954 Mar 30 15:32 diff_new.txt
 ```
 
-#### 移动
+## 移动
 移动文件时，只是inode指向的路径发生了变化，inode编号与实际数据存储的块的位置不会变化。
 ```
 huangchangwei@ubuntu:~$ ls -li diff.txt diff_new.txt 
@@ -100,7 +100,8 @@ huangchangwei@ubuntu:~$ ls -li diff*
 127264718 -rw-r--r-- 1 huangchangwei huangchangwei 6954 Mar 30 15:32 diff_mv.txt
 ```
 
-#### 硬链接
+## 硬链接
+硬链接就是将多个文件名指向同一个inode，可以用不同的文件名访问相同的内容。
 硬链接不会创建新的inode，只会增加对应inode的链接数。
 ```
 huangchangwei@ubuntu:~$ stat diff_mv.txt
@@ -124,7 +125,7 @@ Change: 2021-03-30 15:50:57.770602825 +0800
  Birth: -
 ```
 
-#### 软链接
+## 软链接
 软链接本质是一个文件，其存储的内容是对另一个文件的指针。
 对一个文件创建软链接，inode编号会不同，被指向文件的inode链接数不会增加，且可以对不存在的文件或目录创建软链接。
 ```
@@ -139,7 +140,7 @@ huangchangwei@ubuntu:~$ ls -li diff*
 127508630 lrwxrwxrwx 1 huangchangwei huangchangwei   11 Mar 30 15:54 diff_mv_softlink.txt -> diff_mv.txt
 ```
 
-#### 删除
+## 删除
 删除文件时，会检查inode中链接数。如果链接数大于1，就只会删掉一个硬链接，不影响数据。
 如果硬链接等于1，那么这个inode会被释放掉，对应的块也会被标记为空闲。
 
