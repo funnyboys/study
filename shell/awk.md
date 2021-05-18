@@ -92,3 +92,8 @@ a
 ff
 hh
 ```
+
+# 打印第几行到第几行
+```
+cat asm.txt | awk '{print $3, $4}' > new_asm.txt
+```

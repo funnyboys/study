@@ -1,3 +1,17 @@
+# 环境变量
+## 查看环境变量
+```
+$ echo $PATH
+```
+
+## 暂时修改环境变量
+```
+$ export PATH="new_path/bin:$PATH"
+```
+
+## 永久修改环境变量
+修改 ~/.bashrc ，增加对应路径
+
 # 包管理
 ## 查找可用的包
 ```
@@ -45,3 +59,13 @@ yum install -y sshpass
 在ssh命令的前面带上sshpass
 sshpass -p 'redhat' ssh root@192.168.1.1
 ```
+
+# 压缩和解压
+## 压缩
+
+## 解压
+### 解压xz文件
+tar -Jxf
+
+### 解压bz2文件
+tar -jxvf
