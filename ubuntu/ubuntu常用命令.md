@@ -69,3 +69,13 @@ tar -Jxf
 
 ### 解压bz2文件
 tar -jxvf
+
+# 安装beyondcompare
+1. 下载rpm包
+https://www.scootersoftware.com/download.php
+
+2. 安装依赖-pdftotext
+` sudo yum install poppler-utils `
+
+3. 安装rpm包
+` sudo rpm -ivh bcompare-4.3.7.25118.x86_64.rpm `
