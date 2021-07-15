@@ -18,3 +18,11 @@ git branch -d bug_xzx
 
 ## 删除remote分支
 git push origin --delete bug_xzx
+
+# https和ssh的clone方式区别
+## https
+不管是谁，拿到url随便clone，但是在push的时候需要验证用户名和密码。
+
+## ssh
+clone的项目你必须是拥有者或者管理员，而且需要在clone前添加SSH Key。
+添加ssh key之后，git push不再需要密码。
