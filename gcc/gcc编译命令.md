@@ -21,3 +21,8 @@ riscv64-unknown-linux-gnu-objdump: supported targets: elf64-littleriscv elf32-li
 ```
 riscv64-unknown-linux-gnu-objdump: supported architectures: riscv riscv:rv64 riscv:rv32
 ```
+
+# -D(编译时增加宏定义)
+```
+gcc -c test.c -D DEBUG_ON
+```
