@@ -1,2 +1,2 @@
 # study
-study blog
+for study blog
