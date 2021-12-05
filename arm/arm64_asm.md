@@ -23,7 +23,14 @@ https://www.jianshu.com/p/66d801c85ee9
  *    w4 = addr[x2]
  *    x2 = x2 + 4
  */
-1:	ldr	w4, [x2], #4
+ldr	w4, [x2], #4
+```
+```
+/*
+ * 将xs寄存器的值加上offset之后的值作为内存地址，
+ * 将该内存地址的数据取出，放入寄存器xd中
+ */
+ldr xd, [xs, #offset]
 ```
 
 # 3. QA

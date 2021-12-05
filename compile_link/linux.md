@@ -27,3 +27,14 @@ libutil.so.1 => /lib/x86_64-linux-gnu/libutil.so.1 (0x00007f7f81325000)
 
 2. 搜索 apt 仓库中对应的包并安装
 使用 `apt-cache search libncurses*` 搜索对应的包，然后安装即可。
+
+# 2. 查看并指定动态库链接路径
+## 2.1. 查看动态库链接路径
+```
+echo $LD_LIBRARY_PATH
+```
+
+## 2.2. 增加动态库路径
+```
+export LD_LIBRARY_PATH=/media/vdb/git/openssl/:$LD_LIBRARY_PATH
+```

@@ -8,3 +8,14 @@ Aborted (core dumped)
 
 解决方法：
 删除项目，重新checkout工程
+
+# svn diff为二进制类型
+错误信息：
+```
+无法显示: 文件标记为二进制类型。
+```
+
+强制比较方法：
+```
+svn diff --force 文件名
+```
