@@ -34,3 +34,7 @@ brew update/upgrade/cleanup
 ```
 option + command + 左/右
 ```
+
+# 3. 问题
+## 3.1. macbook tab无法切换应用
+如果你是最小化了窗口，按Command+tab键，选中到那个应用之后，再松开tab键，按住option键，然后再松开Command键就可以显示窗口了
